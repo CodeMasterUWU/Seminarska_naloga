@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.seminarskanaloga.SceneController1">
+   <children>
+      <Label layoutX="24.0" layoutY="24.0" text="Vstavite koordinate ogljišč trikotnika:">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="izracunaj" layoutX="321.0" layoutY="201.0" mnemonicParsing="false" onAction="#switchToScene2" text="Izračunaj" />
+      <TextField layoutX="113.0" layoutY="79.0" prefHeight="25.0" prefWidth="45.0" promptText="x" fx:id="x1TextField" />
+      <TextField layoutX="113.0" layoutY="116.0" prefHeight="25.0" prefWidth="45.0" promptText="x" fx:id="x2TextField" />
+      <TextField layoutX="113.0" layoutY="155.0" prefHeight="25.0" prefWidth="45.0" promptText="x" fx:id="x3TextField" />
+      <Label layoutX="24.0" layoutY="83.0" text="Koordinate A" />
+      <Label layoutX="25.0" layoutY="120.0" text="Koordinate B" />
+      <Label layoutX="25.0" layoutY="159.0" text="Koordinate C" />
+      <Label layoutX="164.0" layoutY="83.0" text="," />
+      <Label layoutX="164.0" layoutY="120.0" text="," />
+      <Label layoutX="164.0" layoutY="159.0" text="," />
+      <TextField fx:id="y1TextField" layoutX="176.0" layoutY="79.0" prefHeight="25.0" prefWidth="45.0" promptText="y" />
+      <TextField fx:id="y2TextField" layoutX="176.0" layoutY="116.0" prefHeight="25.0" prefWidth="45.0" promptText="y" />
+      <TextField fx:id="y3TextField" layoutX="176.0" layoutY="155.0" prefHeight="25.0" prefWidth="45.0" promptText="y" />
+      <Label fx:id="napakaKoordinate" layoutX="242.0" layoutY="159.0" text="   " />
+   </children>
+</AnchorPane>
