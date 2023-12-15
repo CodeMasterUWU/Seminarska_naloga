@@ -13,9 +13,14 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 public class SceneController1 {
+    public SceneController1()throws IOException{
+        raf = new RandomAccessFile("koordinate.txt","rw");
+    }
+    RandomAccessFile raf;
 
     @FXML
     protected TextField x1TextField, x2TextField, x3TextField, y1TextField, y2TextField, y3TextField;
@@ -32,11 +37,19 @@ public class SceneController1 {
         boolean error;
         try {
             x1 = Double.parseDouble(x1TextField.getText());
+            raf.writeDouble(x1);
             x2 = Double.parseDouble(x2TextField.getText());
+            raf.writeDouble(x2);
             x3 = Double.parseDouble(x3TextField.getText());
+            raf.writeDouble(x3);
             y1 = Double.parseDouble(y1TextField.getText());
+            raf.writeDouble(y1);
             y2 = Double.parseDouble(y2TextField.getText());
+            raf.writeDouble(y2);
             y3 = Double.parseDouble(y3TextField.getText());
+            raf.writeDouble(y3);
+
+            raf.seek(0);
             error = false;
         } catch (NumberFormatException e) {
             napakaKoordinate.setText("Vstavite lahko samo števila.");
@@ -49,10 +62,12 @@ public class SceneController1 {
             y3TextField.setText("");
         }
         if (!error) {
-            Triangle triangle = new Triangle(x1, y1, x2, y2, x3, y3);
+            Triangle triangle = new Triangle(raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble());
             Main.abc.add(triangle);
 
-            Prism prism = new Prism(x1, y1, x2, y2, x3, y3, visina);
+            raf.seek(0);
+
+            Prism prism = new Prism(raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble(),raf.readDouble(), visina);
             Main.abcv.add(prism);
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view2.fxml"));
@@ -68,6 +83,8 @@ public class SceneController1 {
             scene=new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+            raf.close();
         }
 
     }
